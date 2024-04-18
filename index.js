@@ -2,13 +2,19 @@
 
 const fs = require('fs');
 
-let a = fs.readFileSync('./a.txt')
+try {
+    let aData = fs.readFileSync('./a.txt', 'utf-8');
+    let bData = fs.readFileSync('./b.txt', 'utf-8');
 
-let b = fs.readFileSync('./b.txt');
+    let a = Number(aData);
+    let b = Number(bData);
 
-console.log(Number(a));
-console.log(Number(b));
+    if (isNaN(a) || isNaN(b)) {
+        console.log('Type error: is not number')
+    }
 
-for (let i = 0; i < Number(a); i++) {
-    console.log(i);
+    console.log(a + b);
+
+} catch (err){
+    console.log(err);
 }
